@@ -68,6 +68,10 @@ public class SapMiddlewareService {
 		    "Billing__c", new String[] {
 		    		"Billing_Code__c","Business_Partner_SAP__c","Contract_Account_SAP__c","Company_Code__c","Contract_SAP__c",
 		    		"Billing_Trans__c","Division__c","Document_Type__c","MR_Unit__c","Portion__c","Prev_doc_No__c"
+		    },
+		    "Security_Deposit__c",new String[] {
+		    		"Security_Deposit_Code__c","Cash_Deposit_Payment__c","Request_Amount__c","Business_Partner__c",
+		    		"Status__c","Start_Date__c","Return_Date__c","Non_Cash__c","Description__c","Currency__c","Contract_Account_SAP__c","Contract_SAP__c"	
 		    }
 		    
 		);

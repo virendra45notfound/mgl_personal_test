@@ -57,4 +57,9 @@ public class SapMiddlewareController {
 	public ResponseEntity<String> uploadBilling(@RequestBody String body) {
 		return ResponseEntity.ok(sapMiddlewareService.processAndUpload("Billing__c", body, "Billing_Code__c"));
 	}
+	@PostMapping(value = "/upload/security-deposit", consumes = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<String> uploadSecurityDeposit(@RequestBody String body) {
+		return ResponseEntity.ok(sapMiddlewareService.processAndUpload("Security_Deposit__c", body, "Security_Deposit_Code__c"));
+	}
+	
 }

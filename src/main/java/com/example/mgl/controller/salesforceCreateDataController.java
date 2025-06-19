@@ -80,4 +80,11 @@ public class salesforceCreateDataController {
 		JsonNode jobResponse = mService.createJob2(accessToken, "Billing__c","Billing_Code__c");
 		return ResponseEntity.ok(jobResponse);
 	}
+	@PostMapping("/security-deposit")
+	public ResponseEntity<JsonNode> createSalesforceSecurityDepositJob() throws IOException, InterruptedException {
+		JsonNode tokenNode = tokenService.getAccessToken();
+		String accessToken = tokenNode.get("access_token").asText();
+		JsonNode jobResponse = mService.createJob2(accessToken, "Security_Deposit__c","Security_Deposit_Code__c");
+		return ResponseEntity.ok(jobResponse);
+	}
 }
