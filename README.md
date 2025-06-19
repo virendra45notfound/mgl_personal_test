@@ -1,2 +1,2 @@
-# mgl_personal_test
-MGL Local Project
+This is the final merged content you want to keep.
+
