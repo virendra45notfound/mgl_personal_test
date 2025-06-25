@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -34,13 +35,15 @@ import java.util.Collections;
 @Service
 public class salesforceTokenService {
 
+	// Salesforce 
 	@Value("${salesforce.grant-type}")		private String grantType;
 	@Value("${salesforce.client-id}")			private String clientId;
 	@Value("${salesforce.client-secret}")	private String clientSecret;
 	@Value("${salesforce.username}")		private String username;
 	@Value("${salesforce.password}")		private String password;
 	@Value("${salesforce.token-url}")		private String tokenUrl;
-
+	
+	
 //	private final RestTemplate restTemplate = new RestTemplate();
 	private final HttpClient client = HttpClient.newHttpClient();
 
@@ -54,24 +57,6 @@ public class salesforceTokenService {
 				.queryParam("client_id", clientId).queryParam("client_secret", clientSecret)
 				.queryParam("username", username).queryParam("password", password).toUriString();
 
-/*
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-
-		HttpEntity<String> entity = new HttpEntity<>(headers);
-
-		try {
-			ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
-			ObjectMapper mapper = new ObjectMapper();
-			return mapper.readTree(response.getBody());
-		} catch (Exception e) {
-			throw new RuntimeException("Failed to generate access token: " + e.getMessage());
-		}
-		
-*/
-		// ****************************************************************************************
-		// Updated Code Starts Here
 		HttpRequest req = HttpRequest.newBuilder()
 	            .uri(URI.create(url))
 	            .header("Accept", "application/json")
@@ -89,8 +74,7 @@ public class salesforceTokenService {
 			return response;
 		}
 		
-		// Updated Code Ends Here
-		// *****************************************************************************************
-		
 	}
+	
+	
 }
